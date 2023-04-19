@@ -5,6 +5,7 @@ import { storeStateType } from "../types";
 const Counter = () => {
   const dispatch = useDispatch();
   const counter = useSelector((state: storeStateType) => state.counter);
+  const show = useSelector((state: storeStateType) => state.showCounter);
 
   const incrementHandler = () => {
     dispatch({ type: "increment" });
@@ -18,12 +19,14 @@ const Counter = () => {
     dispatch({ type: "increase", amount: 10 });
   };
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "toggle" });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {show && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={increaseHandler}>Increase by 10</button>

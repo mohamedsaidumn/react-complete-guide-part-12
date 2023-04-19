@@ -1,1 +1,1 @@
-export type storeStateType = { counter: number };
+export type storeStateType = { counter: number; showCounter: boolean };
